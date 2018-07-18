@@ -11,12 +11,25 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
-    },
-    {
-      path: '/projeto/:idProjeto',
-      name: 'Projeto',
-      component: Projeto
-    }
+      component: Home,      
+      meta: {
+        breadcrumb: 'Home',
+        title: 'Home',
+        subtitle: 'Todos os projetos'
+      },
+      children: [
+        {
+          path: 'projeto/:idProjeto',
+          name: 'Projeto',
+          component: Projeto,
+          breadcrumb: 'projeto',
+          meta: {
+            breadcrumb: 'Projeto',
+            title: 'Projeto',
+            subtitle: 'Detalhes do projeto'
+          }   
+        }
+      ] 
+    },    
   ]
 })

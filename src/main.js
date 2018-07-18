@@ -15,10 +15,19 @@ import '../static/js/adminLTE.js';
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueBreadcrumbs from 'vue-breadcrumbs';
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
+Vue.use(VueBreadcrumbs, {
+  template: '<ol class="breadcrumb">' +
+            '<li v-for="(crumb, key) in $breadcrumbs">' +
+            '<router-link :to="linkProp(crumb)" :key="key"> {{ crumb | crumbText }} </router-link>' +
+            '</li></ol>'
+});
+
+export const globalBus = new Vue();
+
 new Vue({
   el: '#app',
   router,

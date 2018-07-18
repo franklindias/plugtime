@@ -1,18 +1,19 @@
 <template>
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        {{ titles.title }}
+        <small>{{ titles.subtitle }}</small>
+        <i class="fa fa-dashboad"></i>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
+      <breadcrumbs></breadcrumbs>  
     </section>
 </template>
 
 <script>
-    export default {
-        name: 'Breadrumb'
-    }
+  import { serverBus } from '../../main';
+
+  export default {
+    name: 'Breadrumb',
+    props: ['titles'],   
+  }
 </script>

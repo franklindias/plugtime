@@ -3,7 +3,7 @@
     <navbar></navbar>
     <sidebar></sidebar>   
     <div class="content-wrapper">
-      <breadcrumb></breadcrumb>
+      <breadcrumb :titles="routeTitles"></breadcrumb>      
       <section class="content">       
         <router-view/>
       </section>
@@ -26,6 +26,23 @@ export default {
     'sidebar': Sidebar,
     'breadcrumb': Breadcrumb,
     'footer-lte': Footer,
-  }
+  },
+
+  created() {
+    this.routeTitles = this.$route.meta;
+  },
+
+  data: function() {
+    return{
+      routeTitles: null
+    }
+  },
+
+  watch: {
+    $route (to, from){
+      console.log(to);
+      this.routeTitles = to.meta;
+    }
+  } 
 }
 </script>

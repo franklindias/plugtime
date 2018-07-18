@@ -1,18 +1,23 @@
 <template>
-  <div class="row">
-    <router-link :to="{name:'Projeto', params: {idProjeto: 1}}" >
+  <div>
+    <router-view></router-view>
+
+    <div class="row" v-if="$route.name == 'Home'">
       <div class="col-md-3" v-for="projeto in projetos">
-          <div class="box box-success">
+        <div class="box box-success">
+          <router-link :to="{name:'Projeto', params: {idProjeto: 1}}" >
             <div class="box-header with-border">
               <h3 class="box-title">{{ projeto.nome }}</h3>
             </div>
-            <div class="box-body">
-              <i class="fa fa-users"></i> {{ projeto.participantes.length }} Participantes <br/>
-              <i class="fa fa-clock-o"></i> {{ projeto.horasInvestidas }} Horas<br/>
-            </div>
+          </router-link>
+          <div class="box-body">
+            <i class="fa fa-users"></i> {{ projeto.participantes.length }} Participantes <br/>
+            <i class="fa fa-clock-o"></i> {{ projeto.horasInvestidas }} Horas<br/>
           </div>
         </div>
-      </router-link>
+      </div>  
+    </div>
+
   </div>
 </template>
 

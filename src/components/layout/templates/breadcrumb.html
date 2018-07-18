@@ -1,0 +1,4 @@
+'<ol class="breadcrumb">' +
+    '<li v-for="(crumb, key) in $breadcrumbs">' +
+    '<router-link :to="linkProp(crumb)" :key="key"> {{ crumb | crumbText }} </router-link>' +
+    '</li></ol>'
